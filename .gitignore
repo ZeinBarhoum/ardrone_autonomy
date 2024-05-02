@@ -18,10 +18,10 @@
 /build/CMakeFiles/
 
 # Build results
-/ARDroneLib/FFMPEG/Includes
-/ARDroneLib/FFMPEG/FFMPEG
-/ARDroneLib/Soft/Build/
-/ARDroneLib/Soft/Common/generated_custom.h
+ardronelib/ARDroneLib/FFMPEG/Includes
+ardronelib/ARDroneLib/FFMPEG/ffmpeg
+ardronelib/ARDroneLib/Soft/Build/
+ardronelib/ARDroneLib/Soft/Common/generated_custom.h
 /bin
 /build/
 /msg_gen
