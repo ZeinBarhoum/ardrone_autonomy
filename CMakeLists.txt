@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(ardrone_autonomy)
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
+elseif(MSVC)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W0")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W0")
+endif()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED COMPONENTS
@@ -62,8 +71,11 @@ add_message_files(
 # Generate added messages and services with any dependencies listed here
 generate_messages(DEPENDENCIES geometry_msgs std_msgs)
 
+find_package(PkgConfig REQUIRED)
+pkg_search_module(SDL REQUIRED sdl)
+
 catkin_package(
-  DEPENDS libsdl-dev
+  DEPENDS libsdl1.2-dev
   CATKIN_DEPENDS
     roscpp
     image_transport
@@ -77,8 +89,7 @@ catkin_package(
 # Build [pathced] ardronelib from an external project
 include(ExternalProject)
 ExternalProject_Add(ardronelib
-    GIT_REPOSITORY git://github.com/AutonomyLab/ardronelib.git
-    GIT_TAG 2f987029c55531e4c0119c3600f9c57f935851ed
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ardronelib
     PREFIX ${CATKIN_DEVEL_PREFIX}
     CONFIGURE_COMMAND echo "No configure"
     BUILD_COMMAND make
@@ -87,7 +98,7 @@ ExternalProject_Add(ardronelib
 )
 
 # Find sdk directories for headers and libraries in devel space
-set(SDK ${CATKIN_DEVEL_PREFIX}/src/ardronelib/ARDroneLib/)
+set(SDK ${CMAKE_CURRENT_SOURCE_DIR}/ardronelib/ARDroneLib/)
 include_directories(
     ${SDK}
     ${SDK}/FFMPEG/Includes
