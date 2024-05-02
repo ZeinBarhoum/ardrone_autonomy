@@ -46,6 +46,7 @@ ARDroneDriver::ARDroneDriver()
     is_inited(false),
     last_receive_time(0.0)
 {
+  motors_sub = node_handle.subscribe("ardrone/motors", 1, &MotorsCommandCallback);
   cmd_vel_sub = node_handle.subscribe("cmd_vel", 1, &CmdVelCallback);
   takeoff_sub = node_handle.subscribe("ardrone/takeoff", 1, &TakeoffCallback);
   reset_sub = node_handle.subscribe("ardrone/reset", 1, &ResetCallback);

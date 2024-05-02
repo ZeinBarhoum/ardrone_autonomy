@@ -85,6 +85,7 @@ private:
 
   ros::NodeHandle node_handle;
   ros::NodeHandle private_nh;
+  ros::Subscriber motors_sub;
   ros::Subscriber cmd_vel_sub;
   ros::Subscriber takeoff_sub;
   ros::Subscriber reset_sub;

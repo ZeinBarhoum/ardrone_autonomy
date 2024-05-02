@@ -27,6 +27,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
 #include <ardrone_autonomy/ardrone_sdk.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Int16MultiArray.h>
 #include <std_msgs/Empty.h>
 #include <std_srvs/Empty.h>
 #include <ardrone_autonomy/CamSelect.h>
@@ -42,6 +43,7 @@ void CmdVelCallback(const geometry_msgs::TwistConstPtr &msg);
 void LandCallback(const std_msgs::Empty &msg);
 void ResetCallback(const std_msgs::Empty &msg);
 void TakeoffCallback(const std_msgs::Empty &msg);
+void MotorsCommandCallback(const std_msgs::Int16MultiArrayPtr &msg);
 
 // void toggleCamCallback(const std_msgs::Empty &msg);
 bool SetCamChannelCallback(
