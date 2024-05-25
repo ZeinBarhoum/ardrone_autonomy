@@ -1,0 +1,37 @@
+topics:
+  # -
+  #   topic: /ardrone/image_raw  # Topic name on both ROS 1 and ROS 2
+  #   type: sensor_msgs/msg/Image  # Type of topic to bridge
+  #   queue_size: 1  # Queue size
+  #   qos:
+  #     history: keep_last  # OR keep_all, then you can omit `depth` parameter below
+  #     depth: 5  # Only required when history == keep_last
+  #     reliability: best_effort  # OR best_effort
+  # -
+  #   topic: /ardrone/camera_info  # Topic name on both ROS 1 and ROS 2
+  #   type: sensor_msgs/msg/CameraInfo  # Type of topic to bridge
+  #   queue_size: 10  # Queue size
+  -
+    topic: /ardrone/imu  # Topic name on both ROS 1 and ROS 2
+    type: sensor_msgs/msg/Imu  # Type of topic to bridge
+    queue_size: 10  # Queue size
+  -
+    topic: /ardrone/motors  # Topic name on both ROS 1 and ROS 2
+    type: std_msgs/msg/Int16MultiArray  # Type of topic to bridge
+    queue_size: 10  # Queue size
+  -
+    topic: /ardrone/cmd_vel  # Topic name on both ROS 1 and ROS 2
+    type: geometry_msgs/msg/Twist  # Type of topic to bridge
+    queue_size: 10  # Queue size
+  -
+    topic: /ardrone/takeoff  # Topic name on both ROS 1 and ROS 2
+    type: std_msgs/msg/Empty  # Type of topic to bridge
+    queue_size: 10  # Queue size
+  -
+    topic: /ardrone/land  # Topic name on both ROS 1 and ROS 2
+    type: std_msgs/msg/Empty  # Type of topic to bridge
+    queue_size: 10  # Queue size
+  -
+    topic: /ardrone/reset  # Topic name on both ROS 1 and ROS 2
+    type: std_msgs/msg/Empty  # Type of topic to bridge
+    queue_size: 10  # Queue size
